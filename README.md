@@ -1,20 +1,23 @@
 # Clients API - DevOps Assessment
 
-This repository contains a complete DevOps solution to deploy the **Clients API** using Kubernetes and GitHub Actions.
+This project sets up a full CI/CD pipeline using Jenkins and Kubernetes for the Clients API.
 
-## ✅ Key Features
+## Features
 
-- CI/CD pipeline using GitHub Actions
-- Kubernetes manifests for:
-  - Clients API
-  - MongoDB (datastore)
-  - LoadBalancer Service
-  - Ingress with NGINX
-  - TLS via Let's Encrypt
-  - Certificate Manager (cert-manager)
-- Domain: `clients.api.deltacapita.com`
+- CI/CD with Jenkins
+- Kubernetes deployment
+- MongoDB as datastore
+- NGINX Ingress + Let's Encrypt TLS
+- Live URL: `https://clients.api.deltacapita.com`
 
----
+## Folder Structure
 
-## 📁 Folder Structure
+- `Jenkinsfile`: Pipeline definition
+- `k8s/`: Kubernetes manifests
+- `Dockerfile`: API container build
 
+## How to Deploy
+
+```bash
+kubectl apply -f k8s/issuer.yaml
+kubectl apply -f k8s/
