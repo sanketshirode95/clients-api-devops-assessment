@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                sh 'docker build -t clients-api:latest .'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running Tests...'
+                sh 'echo "Mock tests passed!"'
+            }
+        }
+
+        stage('Push to Registry') {
+            steps {
+                echo 'Pushing to DockerHub (mock)...'
+                // Add docker login and push if needed
+            }
+        }
+
+        stage('Deploy to K8s') {
+            steps {
+                withKubeConfig([credentialsId: 'kubeconfig-credentials-id']) {
+                    sh 'kubectl apply -f k8s/'
+                }
+            }
+        }
+    }
+}
