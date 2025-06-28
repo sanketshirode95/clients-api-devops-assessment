@@ -33,6 +33,6 @@ Jenkinsfile in `/jenkins`:
 
 ## Setup
 
-# Deploy MongoDB and Clients API
+- Deploy MongoDB and Clients API
 ```bash
 kubectl apply -f k8s/
