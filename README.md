@@ -1,23 +1,38 @@
-# Clients API - DevOps Assessment
+# Clients API DevOps Assessment
 
-This project sets up a full CI/CD pipeline using Jenkins and Kubernetes for the Clients API.
+This repo contains the Kubernetes manifests and CI/CD setup for deploying a sample Clients API on Kubernetes using Jenkins, MongoDB, and TLS with Let's Encrypt.
 
-## Features
+## Components
 
-- CI/CD with Jenkins
-- Kubernetes deployment
+- CI/CD with Jenkins (Jenkinsfile)
+- Dockerized Clients API
 - MongoDB as datastore
-- NGINX Ingress + Let's Encrypt TLS
-- Live URL: `https://clients.api.deltacapita.com`
+- Kubernetes manifests for:
+  - Deployment & Service
+  - Ingress with Let's Encrypt TLS
+  - Cert Manager + ClusterIssuer + Certificate
 
-## Folder Structure
+## Domain
 
-- `Jenkinsfile`: Pipeline definition
-- `k8s/`: Kubernetes manifests
-- `Dockerfile`: API container build
+`clients.api.deltacapita.com` - Example FQDN with TLS support via Cert Manager
 
-## How to Deploy
+## CI/CD
 
+Jenkinsfile in `/jenkins`:
+- Checkout code
+- Build Docker image
+- Run tests
+- Deploy to Kubernetes using `kubectl`
+
+## Prerequisites
+
+- Kubernetes Cluster with Ingress Controller installed
+- Cert-Manager installed
+- DockerHub or private registry for image push
+- Jenkins with kubeconfig credentials
+
+## Setup
+
+# Deploy MongoDB and Clients API
 ```bash
-kubectl apply -f k8s/Issuer.yaml
 kubectl apply -f k8s/
