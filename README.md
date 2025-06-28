@@ -19,5 +19,5 @@ This project sets up a full CI/CD pipeline using Jenkins and Kubernetes for the 
 ## How to Deploy
 
 ```bash
-kubectl apply -f k8s/issuer.yaml
+kubectl apply -f k8s/Issuer.yaml
 kubectl apply -f k8s/
